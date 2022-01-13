@@ -10,8 +10,8 @@ public class DonoBLL {
     }
 
     public static void criarDonoEmpresa(DonoEmpresa dono){
-        int nextID1 = getNextId();
-        dono.setIdDono(nextID1);
+        int nextIDDono = getNextId();
+        dono.setIdDono(nextIDDono);
         Repositorio.getRepositorio().getDonos().put(dono.getIdDono(), dono);
         Repositorio.getRepositorio().serializar("donos.repo");
     }

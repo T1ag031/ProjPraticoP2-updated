@@ -41,13 +41,15 @@ public class EscolhaInicial extends JFrame implements ActionListener {
         }
         if (e.getSource()==registarDonoEmpresaButton){
             frame.dispose();
-            new RegistarDono();
+             new RegistarDono();
+            //new CriarEmpresa();
         }
         if (e.getSource()==iniciarSessãoClienteButton){
             frame.dispose();
             new LogIn();
         }
         if (e.getSource()==sairButton){
+            frame.dispose();
             new PaginaInicial();
         }
     }

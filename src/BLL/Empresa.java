@@ -1,8 +1,9 @@
 package BLL;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Empresa {
+public class Empresa implements Serializable {
     private String nome;
     private String nif;
     private String localidade;

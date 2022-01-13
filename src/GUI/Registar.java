@@ -63,6 +63,7 @@ public class Registar extends JFrame implements ActionListener {
 
             label.setText("CLIENTE CRIADO COM SUCESSO!");
         }
+
         if (e.getSource()==voltarButton){
             frame1.dispose();
             new EscolhaInicial();

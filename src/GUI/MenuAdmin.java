@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
 
 public class MenuAdmin extends JFrame implements ActionListener {
     private JPanel panel1;
@@ -40,6 +41,10 @@ public class MenuAdmin extends JFrame implements ActionListener {
         if (e.getSource()==listarClientesButton){
             frame.dispose();
             new ListarClientes();
+        }
+        if (e.getSource()==eliminarEmpresaButton){
+            frame.dispose();
+            new RemoverEmpresa();
         }
     }
 }

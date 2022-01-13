@@ -56,9 +56,9 @@ public class RegistarDono extends JFrame implements ActionListener {
             dono.setUsernameDono(usern1);
             dono.setPasswordDono(pass1);
 
-            DonoBLL.criarDonoEmpresa(dono); //problema aqui
+            DonoBLL.criarDonoEmpresa(dono);
 
-            label.setText("CLIENTE CRIADO COM SUCESSO!");
+            label.setText("DONO DE EMPRESA CRIADO COM SUCESSO!");
 
     }
         if (e.getSource()==voltarButton){

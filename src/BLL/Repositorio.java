@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Repositorio implements Serializable {
-    private static Repositorio repo = null;
+    private static Repositorio _repo = null;
     private int nextidUser=0;
     private int nextiDDono=0;
     private int nextiDEmpresa=0;
@@ -58,34 +58,33 @@ public class Repositorio implements Serializable {
     public static Repositorio getRepositorio() {
         ReentrantLock lock = new ReentrantLock();
         lock.lock();
-        if (repo == null) {
-            repo = new Repositorio();
+        if (_repo == null) {
+            _repo = new Repositorio();
         }
         lock.unlock();
-        return repo;
+        return _repo;
     }
 
     public void serializar(String filename) {
         try {
             FileOutputStream fileout = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileout);
-            out.writeObject(repo);
+            out.writeObject(_repo);
             out.close();
             fileout.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public static void desserializar(String filename){
         try {
             FileInputStream fileIn = new FileInputStream(filename);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            repo = (Repositorio) in.readObject();
+            _repo = (Repositorio) in.readObject();
             in.close();
             fileIn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch (IOException | ClassNotFoundException ex){
+            ex.printStackTrace();
         }
     }
 }

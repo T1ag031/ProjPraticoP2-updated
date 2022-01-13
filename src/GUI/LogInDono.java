@@ -1,9 +1,12 @@
 package GUI;
 
+import BLL.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 
 public class LogInDono extends JFrame implements ActionListener {
     private JPanel panel1;
@@ -35,8 +38,17 @@ public class LogInDono extends JFrame implements ActionListener {
             passwordField1.setText("");
         }
         if (e.getSource()==logInButton){
-            String user;
-            String pass;
+
+            Collection<DonoEmpresa> dEmp = DonoBLL.getAllDonos();
+            String pass = String.valueOf(passwordField1.getPassword());
+            for (DonoEmpresa donoEmpresa : dEmp){
+                if (donoEmpresa.getUsernameDono().equals(textField1.getText())){
+                    if (donoEmpresa.getPasswordDono().equals(pass)){
+                        frame.dispose();
+                        new MenuDono();
+                    }
+                }
+            }
             if (textField1.getText().equals("admin") && passwordField1.getText().equals("admin")){
                 frame.dispose();
                 new MenuAdmin();
