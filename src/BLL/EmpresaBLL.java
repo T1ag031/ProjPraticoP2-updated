@@ -5,7 +5,7 @@ import java.util.Collection;
 public class EmpresaBLL {
     public static int getNextIdEmpresa(){
         int nextid = Repositorio.getRepositorio().getNextiDEmpresa();
-        Repositorio.getRepositorio().setNextidUser(++nextid);
+        Repositorio.getRepositorio().setNextiDEmpresa(++nextid);
         return nextid;
     }
 
@@ -13,7 +13,7 @@ public class EmpresaBLL {
         int nextid = getNextIdEmpresa();
         empresa.setIdEmpresa(nextid);
         Repositorio.getRepositorio().getEmpresa().put(empresa.getIdEmpresa(), empresa);
-        Repositorio.getRepositorio().serializar("empresa.repo");
+        Repositorio.getRepositorio().serializar("empresa.repo", Repositorio.getRepositorio().getEmpresa());
     }
 
     public static Collection<Empresa> getAllEmpresas(){

@@ -1,21 +1,50 @@
 package BLL;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Consulta {
-    private Date dataconsulta;
+public class Consulta implements Serializable {
+    private String dataconsulta;
     private float preco;
     private Date dataPagamento;
     private String nomeVet;
+    private String animal;
     private int nConsulta;
+    private Estado estado;
+    private TipoConsulta tipoConsulta;
 
-    public Consulta() {}
+    //public Consulta() {}
 
-    public Date getDataconsulta() {
+
+    public TipoConsulta getTipoConsulta() {
+        return tipoConsulta;
+    }
+
+    public void setTipoConsulta(TipoConsulta tipoConsulta) {
+        this.tipoConsulta = tipoConsulta;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public String getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(String animal) {
+        this.animal = animal;
+    }
+
+    public String getDataconsulta() {
         return dataconsulta;
     }
 
-    public void setDataconsulta(Date dataconsulta) {
+    public void setDataconsulta(String dataconsulta) {
         this.dataconsulta = dataconsulta;
     }
 

@@ -1,7 +1,5 @@
 package GUI;
 
-import BLL.Repositorio;
-import BLL.TipoUtilizador;
 import BLL.UserBLL;
 import BLL.Utilizadores;
 
@@ -22,7 +20,6 @@ public class Registar extends JFrame implements ActionListener {
     private JButton voltarButton;
     private JButton limparButton;
     private JLabel label;
-
     private JFrame frame1;
 
     public Registar(){

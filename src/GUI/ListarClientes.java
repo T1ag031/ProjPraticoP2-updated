@@ -1,6 +1,7 @@
 package GUI;
 
 import BLL.*;
+import BLL.Utilizadores;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,7 @@ public class ListarClientes extends JFrame implements ActionListener {
             new MenuAdmin();
         }
         if (e.getSource()==listarButton){
-
+            Collection<Utilizadores> listaCli = UserBLL.getAllUsers();
 
             DefaultTableModel model = (DefaultTableModel)this.table1.getModel();
 
@@ -43,7 +44,9 @@ public class ListarClientes extends JFrame implements ActionListener {
             model.addColumn("NIF");
             model.addColumn("Morada");
             model.addColumn("Número Telemóvel");
-            Collection<Utilizadores> listaCli = UserBLL.getAllUsers();
+
+            //\model.addRow();
+
 
             /*String nif11= textField1.getText();
             Collection<Utilizadores> users = UserBLL.getAllUsers();

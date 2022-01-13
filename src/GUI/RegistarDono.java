@@ -2,7 +2,6 @@ package GUI;
 
 import BLL.DonoBLL;
 import BLL.DonoEmpresa;
-import BLL.UserBLL;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +44,7 @@ public class RegistarDono extends JFrame implements ActionListener {
             String ntel1 = textField3.getText();
             String morada1= textField4.getText();
             String usern1 = textField5.getText();
-            String pass1 = String.valueOf(passwordField1);
+            String pass1 = String.valueOf(passwordField1.getPassword());
 
             DonoEmpresa dono = new DonoEmpresa();
 

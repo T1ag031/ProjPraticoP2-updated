@@ -1,6 +1,7 @@
 package GUI;
 
 import BLL.*;
+import BLL.DonoEmpresa;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,20 +39,14 @@ public class LogInDono extends JFrame implements ActionListener {
             passwordField1.setText("");
         }
         if (e.getSource()==logInButton){
-
-            Collection<DonoEmpresa> dEmp = DonoBLL.getAllDonos();
             String pass = String.valueOf(passwordField1.getPassword());
-            for (DonoEmpresa donoEmpresa : dEmp){
+            for (DonoEmpresa donoEmpresa : Repositorio.getRepositorio().getDonos().values()){
                 if (donoEmpresa.getUsernameDono().equals(textField1.getText())){
                     if (donoEmpresa.getPasswordDono().equals(pass)){
                         frame.dispose();
                         new MenuDono();
                     }
                 }
-            }
-            if (textField1.getText().equals("admin") && passwordField1.getText().equals("admin")){
-                frame.dispose();
-                new MenuAdmin();
             }
         }
         if (e.getSource()==voltarButton){

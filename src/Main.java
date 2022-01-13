@@ -8,12 +8,18 @@ public class Main {
         new PaginaInicial();
 
         Repositorio repo = Repositorio.getRepositorio();
-        Repositorio.desserializar("cliente.repo");
+       // Repositorio.desserializar("cliente.repo");
 
-        Repositorio repo1 = Repositorio.getRepositorio();
+        /*Repositorio repo1 = Repositorio.getRepositorio();
         Repositorio.desserializar("donos.repo");
 
         Repositorio repo2 = Repositorio.getRepositorio();
         Repositorio.desserializar("empresa.repo");
+
+        Repositorio repo3 = Repositorio.getRepositorio();
+        Repositorio.desserializar("consultas.repo");
+
+        Repositorio repo4 = Repositorio.getRepositorio();
+        Repositorio.desserializar("funcionarios.repo");*/
     }
 }

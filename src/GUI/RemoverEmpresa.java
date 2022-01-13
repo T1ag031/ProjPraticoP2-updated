@@ -23,7 +23,6 @@ public class RemoverEmpresa extends JFrame implements ActionListener {
     private JLabel labelloc;
     private JLabel labeltel;
     private JFrame frame;
-    Collection<Empresa> empresas = EmpresaBLL.getAllEmpresas();
 
     public RemoverEmpresa(){
         frame = new JFrame("REMOVER EMPRESA");
@@ -55,19 +54,22 @@ public class RemoverEmpresa extends JFrame implements ActionListener {
         }
         if (e.getSource()==removerButton){
             String nif1 = textField1.getText();
-            empresas.removeIf(empresa -> empresa.getNif().equals(nif1));
-            labelnif.setText("EMPRESA REMOVIDA!");
+            for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()){
+                if (empresa.getNif().equals(nif1)){
+
+                }
+            }
         }
 
         if (e.getSource()==mostrarDadosEmpresaButton){
             String nif = textField1.getText();
-            for (Empresa empresa : empresas){
+            for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()){
                 if (empresa.getNif().equals(nif)){
                     labelnome.setText("Nome: " + empresa.getNome());
                     labelnif.setText("NIF: " + empresa.getNif());
                     labeltel.setText("Número de Telemóvel: " + empresa.getnTelefone());
                     labelloc.setText("Localidade: " + empresa.getLocalidade());
-                }else {
+                } else {
                     labelnif.setText("EMPRESA NÃO ENCONTRADA!");
                 }
             }

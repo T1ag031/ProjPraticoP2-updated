@@ -1,5 +1,8 @@
 package GUI;
 
+import BLL.FuncionarioBLL;
+import BLL.Funcionario;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,11 +15,11 @@ public class RegistarFuncionario extends JFrame implements ActionListener {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
-    private JTextField textField6;
     private JButton registarButton;
     private JButton limparButton;
     private JButton voltarButton;
     private JPasswordField passwordField1;
+    private JLabel label;
     private JFrame frame;
 
     public RegistarFuncionario(){
@@ -45,8 +48,22 @@ public class RegistarFuncionario extends JFrame implements ActionListener {
             textField3.setText("");
             textField4.setText("");
             textField5.setText("");
-            textField6.setText("");
             passwordField1.setText("");
+        }
+        if (e.getSource()==registarButton){
+
+            Funcionario funcionario = new Funcionario();
+
+            funcionario.setNomeFun(textField1.getText());
+            funcionario.setnTelefoneFun(textField3.getText());
+            funcionario.setNIFFun(textField2.getText());
+            funcionario.setMoradaFun(textField4.getText());
+            funcionario.setUsernameFun(textField5.getText());
+            funcionario.setPasswordFun(passwordField1.getText());
+
+            FuncionarioBLL.criarFuncionario(funcionario);
+
+            label.setText("FUNCIONÁRIO CRIADO COM SUCESSO!");
         }
     }
 }

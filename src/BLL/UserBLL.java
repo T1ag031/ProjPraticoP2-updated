@@ -13,7 +13,7 @@ public class UserBLL{
         int nextID = getNextId();
         User.setIdUser(nextID);
         Repositorio.getRepositorio().getUsers().put(User.getIdUser(), User);
-        Repositorio.getRepositorio().serializar("cliente.repo");
+        Repositorio.getRepositorio().serializar("cliente.repo",Repositorio.getRepositorio().getUsers());
     }
 
     public static Collection<Utilizadores> getAllUsers(){

@@ -1,5 +1,8 @@
 package GUI;
 
+import BLL.Empresa;
+import BLL.Repositorio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +14,11 @@ public class PesquisarEmpresa extends JFrame implements ActionListener {
     private JButton limparButton;
     private JButton voltarButton;
     private JTextField textField1;
-    private JLabel labellistar;
+    private JLabel labelnome;
+    private JLabel labelnif;
+    private JLabel labellocal;
+    private JLabel labeltel;
+    private JLabel labelestado;
     private JFrame frame;
 
     public PesquisarEmpresa(){
@@ -38,9 +45,16 @@ public class PesquisarEmpresa extends JFrame implements ActionListener {
             new MenuDono();
         }
         if (e.getSource()==procurarButton){
-            /*String nif1 = textField1.getText();
-            if (nif1.equals()){
-                labellistar.setText();*/
+            String nif1 = textField1.getText();
+            for (Empresa empresa: Repositorio.getRepositorio().getEmpresa().values()){
+                if (empresa.getNif().equals(nif1)){
+                    labelnome.setText("Nome: " + empresa.getNome());
+                    labelnif.setText("NIF: " + empresa.getNif());
+                    labeltel.setText("Número de Telemóvel: " + empresa.getnTelefone());
+                    labellocal.setText("Localidade: " + empresa.getLocalidade());
+                    labellocal.setText("Tipo de Empresa: " + empresa.getTipo());
+                }
             }
         }
     }
+}

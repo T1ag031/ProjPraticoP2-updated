@@ -1,5 +1,10 @@
 package GUI;
 
+import BLL.Consulta;
+import BLL.ConsultaBLL;
+import BLL.Estado;
+import BLL.Repositorio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +18,11 @@ public class AlterarEstadoConsulta extends JFrame implements ActionListener {
     private JButton limparButton;
     private JButton voltarButton;
     private JLabel label;
+    private JCheckBox confirmarCheckBox;
+    private JCheckBox anularCheckBox;
+    private JCheckBox concluirCheckBox;
+    private JLabel labelestado;
+    private JButton mostrarButton;
     private JFrame frame;
 
     public AlterarEstadoConsulta(){
@@ -27,21 +37,42 @@ public class AlterarEstadoConsulta extends JFrame implements ActionListener {
         alterarButton.addActionListener(this);
         limparButton.addActionListener(this);
         voltarButton.addActionListener(this);
+        mostrarButton.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==limparButton){
             textField1.setText("");
-            textField2.setText("");
+            labelestado.setText("");
         }
         if (e.getSource()==voltarButton){
             frame.dispose();
             new MenuDono();
         }
+        if (e.getSource()==mostrarButton){
+            int n = Integer.parseInt(textField1.getText());
+            for (Consulta consulta : Repositorio.getRepositorio().getConsultas().values()){
+                if (n == consulta.getnConsulta()){
+                    labelestado.setText("Estado Atual: " + String.valueOf(consulta.getEstado()));
+                }
+            }
+        }
         if (e.getSource()==alterarButton){
-            /*......*/
-            label.setText("ALTERAÇÃO EFETUADA COM SUCESSO");
+            int n = Integer.parseInt(textField1.getText());
+            for (Consulta consulta : Repositorio.getRepositorio().getConsultas().values()){
+                if (n == consulta.getnConsulta()){
+                    if (confirmarCheckBox.isSelected()){
+                        consulta.setEstado(Estado.CONFIRMADA);
+                    }
+                    if (anularCheckBox.isSelected()){
+                        consulta.setEstado(Estado.ANULADA);
+                    }
+                    if (concluirCheckBox.isSelected()){
+                        consulta.setEstado(Estado.CONCLUIDA);
+                    }
+                }
+            }
         }
     }
 }

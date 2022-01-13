@@ -12,6 +12,8 @@ public class EscolhaInicial extends JFrame implements ActionListener {
     private JButton registarDonoEmpresaButton;
     private JButton iniciarSessãoClienteButton;
     private JButton sairButton;
+    private JButton logInFuncionarioButton;
+    private JButton adminButton;
     private JFrame frame;
     public EscolhaInicial(){
         frame= new JFrame("PetBeauty");
@@ -27,6 +29,8 @@ public class EscolhaInicial extends JFrame implements ActionListener {
         registarDonoEmpresaButton.addActionListener(this);
         iniciarSessãoClienteButton.addActionListener(this);
         sairButton.addActionListener(this);
+        logInFuncionarioButton.addActionListener(this);
+        adminButton.addActionListener(this);
     }
 
     @Override
@@ -42,7 +46,6 @@ public class EscolhaInicial extends JFrame implements ActionListener {
         if (e.getSource()==registarDonoEmpresaButton){
             frame.dispose();
              new RegistarDono();
-            //new CriarEmpresa();
         }
         if (e.getSource()==iniciarSessãoClienteButton){
             frame.dispose();
@@ -51,6 +54,14 @@ public class EscolhaInicial extends JFrame implements ActionListener {
         if (e.getSource()==sairButton){
             frame.dispose();
             new PaginaInicial();
+        }
+        if (e.getSource()==adminButton){
+            frame.dispose();
+            new LogIn();
+        }
+        if (e.getSource()==logInFuncionarioButton){
+            frame.dispose();
+            new LogInFuncionario();
         }
     }
 }

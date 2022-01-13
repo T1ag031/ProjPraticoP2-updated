@@ -2,15 +2,14 @@ package GUI;
 
 import BLL.Empresa;
 import BLL.EmpresaBLL;
+import BLL.TipoEmpresa;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Map;
 
-public class CriarEmpresa extends JFrame implements ActionListener {
+public class CriarEmpresa extends JFrame implements ActionListener  {
     private JPanel panel1;
     private JTextField textField1;
     private JTextField textField2;
@@ -52,21 +51,23 @@ public class CriarEmpresa extends JFrame implements ActionListener {
             new MenuDono();
         }
         if (e.getSource()==registarButton){
-            String nome = textField1.getText();
-            String nif = textField2.getText();
-            String localidade = textField3.getText();
-            String tel = textField4.getText();
-
             Empresa empresa = new Empresa();
 
-            empresa.setNome(nome);
-            empresa.setNif(nif);
-            empresa.setLocalidade(localidade);
-            empresa.setnTelefone(tel);
+            empresa.setNome(textField1.getText());
+            empresa.setNif(textField2.getText());
+            empresa.setLocalidade(textField3.getText());
+            empresa.setnTelefone(textField4.getText());
+            if (belezaCheckBox.isSelected()){
+                empresa.setTipo(TipoEmpresa.BELEZA);
+            }
+            if (saúdeCheckBox.isSelected()){
+                empresa.setTipo(TipoEmpresa.SAUDE);
+            }
 
             EmpresaBLL.criarEmpresa(empresa);
 
             label.setText("EMPRESA CRIADA COM SUCESSO");
         }
+
     }
 }

@@ -13,7 +13,7 @@ public class DonoBLL {
         int nextIDDono = getNextId();
         dono.setIdDono(nextIDDono);
         Repositorio.getRepositorio().getDonos().put(dono.getIdDono(), dono);
-        Repositorio.getRepositorio().serializar("donos.repo");
+        Repositorio.getRepositorio().serializar("donos.repo",Repositorio.getRepositorio().getDonos());
     }
 
     public static Collection<DonoEmpresa> getAllDonos(){

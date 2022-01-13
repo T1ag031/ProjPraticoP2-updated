@@ -9,6 +9,15 @@ public class Empresa implements Serializable {
     private String localidade;
     private String nTelefone;
     private int idEmpresa;
+    private TipoEmpresa tipo;
+
+    public TipoEmpresa getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoEmpresa tipo) {
+        this.tipo = tipo;
+    }
 
     public int getIdEmpresa() {
         return idEmpresa;
