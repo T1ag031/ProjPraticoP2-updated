@@ -5,7 +5,7 @@ import java.util.Collection;
 public class FuncionarioBLL {
     public static int getNextIDFuncionario(){
         int nextID = Repositorio.getRepositorio().getNextIDFuncionario();
-        Repositorio.getRepositorio().setNextiDConsulta(++nextID);
+        Repositorio.getRepositorio().setNextIDFuncionario(++nextID);
         return nextID;
     }
 

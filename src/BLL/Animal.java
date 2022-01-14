@@ -1,12 +1,23 @@
 package BLL;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
     private String nome;
     private int idade;
     private int nChip;
-    private String tipoAnimal;
+    private int nifDono;
+    private TipoAnimal tipoAnimal;
 
     public Animal(){}
+
+    public int getNifDono() {
+        return nifDono;
+    }
+
+    public void setNifDono(int nifDono) {
+        this.nifDono = nifDono;
+    }
 
     public String getNome() {
         return nome;
@@ -32,7 +43,7 @@ public class Animal {
         this.nChip = nChip;
     }
 
-    public String getTipoAnimal() {return tipoAnimal;}
+    public TipoAnimal getTipoAnimal() {return tipoAnimal;}
 
-    public void setTipoAnimal(String tipoAnimal) {this.tipoAnimal = tipoAnimal;}
+    public void setTipoAnimal(TipoAnimal tipoAnimal) {this.tipoAnimal = tipoAnimal;}
 }

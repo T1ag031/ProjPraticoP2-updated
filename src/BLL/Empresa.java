@@ -1,5 +1,7 @@
 package BLL;
 
+import GUI.PaginaInicial;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -9,7 +11,25 @@ public class Empresa implements Serializable {
     private String localidade;
     private String nTelefone;
     private int idEmpresa;
+    private int dono;
+    private EstadoEmpresa estado;
     private TipoEmpresa tipo;
+
+    public EstadoEmpresa getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoEmpresa estado) {
+        this.estado = estado;
+    }
+
+    public int getDono() {
+        return dono;
+    }
+
+    public void setDono(int dono) {
+        this.dono = dono;
+    }
 
     public TipoEmpresa getTipo() {
         return tipo;

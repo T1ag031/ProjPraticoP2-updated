@@ -54,7 +54,7 @@ public class AlterarEstadoConsulta extends JFrame implements ActionListener {
             int n = Integer.parseInt(textField1.getText());
             for (Consulta consulta : Repositorio.getRepositorio().getConsultas().values()){
                 if (n == consulta.getnConsulta()){
-                    labelestado.setText("Estado Atual: " + String.valueOf(consulta.getEstado()));
+                    labelestado.setText("Estado Atual: " + consulta.getEstado());
                 }
             }
         }

@@ -24,7 +24,7 @@
           <text value="Listar Consultas"/>
         </properties>
       </component>
-      <component id="db69d" class="javax.swing.JButton" binding="adicionarProdutosServiçosButton" default-binding="true">
+      <component id="db69d" class="javax.swing.JButton" binding="adicionarProdutosServicosButton">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -47,7 +47,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="af468" class="javax.swing.JButton" binding="terminarSessãoButton" default-binding="true">
+      <component id="af468" class="javax.swing.JButton" binding="terminarSessaoButton">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

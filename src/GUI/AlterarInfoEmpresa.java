@@ -63,6 +63,7 @@ public class AlterarInfoEmpresa extends JFrame implements ActionListener {
                 }
             }
         }
+
         if (e.getSource() == alterarButton) {
             String nif = textField1.getText();
             for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()) {

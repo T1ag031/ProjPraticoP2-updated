@@ -1,5 +1,9 @@
 package GUI;
 
+import BLL.Animal;
+import BLL.AnimalBLL;
+import BLL.TipoAnimal;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,11 +13,14 @@ public class CriarAnimal extends JFrame implements ActionListener {
     private JPanel panel1;
     private JTextField textField1;
     private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+
     private JButton registarButton;
     private JButton limparButton;
     private JButton voltarButton;
+    private JCheckBox domésticoCheckBox;
+    private JCheckBox réptilCheckBox;
+    private JCheckBox outroCheckBox;
+    private JTextField textField3;
     private JFrame frame;
 
     public CriarAnimal(){
@@ -35,15 +42,26 @@ public class CriarAnimal extends JFrame implements ActionListener {
         if (e.getSource()==limparButton){
             textField1.setText("");
             textField2.setText("");
-            textField4.setText("");
-            textField3.setText("");
         }
         if (e.getSource()==voltarButton){
             frame.dispose();
             new MenuCliente();
         }
         if (e.getSource()==registarButton){
-            
+            Animal animal = new Animal();
+            animal.setNome(textField1.getText());
+            animal.setIdade(Integer.parseInt(textField2.getText()));
+            animal.setNifDono(Integer.parseInt(textField3.getText()));
+            if (domésticoCheckBox.isSelected()){
+                animal.setTipoAnimal(TipoAnimal.DOMESTICO);
+            }
+            if (réptilCheckBox.isSelected()){
+                animal.setTipoAnimal(TipoAnimal.REPTIL);
+            }
+            if (outroCheckBox.isSelected()){
+                animal.setTipoAnimal(TipoAnimal.OUTRO);
+            }
+            AnimalBLL.criarAnimal(animal);
         }
     }
 }

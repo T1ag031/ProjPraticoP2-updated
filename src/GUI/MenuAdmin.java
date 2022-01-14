@@ -46,5 +46,9 @@ public class MenuAdmin extends JFrame implements ActionListener {
             frame.dispose();
             new RemoverEmpresa();
         }
+        if (e.getSource()==listarConsultasButton){
+            frame.dispose();
+            new ListarConsultas();
+        }
     }
 }

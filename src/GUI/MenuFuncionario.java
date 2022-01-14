@@ -12,8 +12,8 @@ public class MenuFuncionario extends JFrame implements ActionListener {
     private JPanel panel1;
     private JButton confirmarAnularConsultaButton;
     private JButton listarConsultasButton;
-    private JButton adicionarProdutosServiçosButton;
-    private JButton terminarSessãoButton;
+    private JButton adicionarProdutosServicosButton;
+    private JButton terminarSessaoButton;
     private JFrame frame2;
 
     public MenuFuncionario(){
@@ -27,15 +27,21 @@ public class MenuFuncionario extends JFrame implements ActionListener {
         frame2.setVisible(true);
         confirmarAnularConsultaButton.addActionListener(this);
         listarConsultasButton.addActionListener(this);
-        adicionarProdutosServiçosButton.addActionListener(this);
-        terminarSessãoButton.addActionListener(this);
+        adicionarProdutosServicosButton.addActionListener(this);
+        terminarSessaoButton.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==terminarSessãoButton){
+        if (e.getSource()==terminarSessaoButton){
             frame2.dispose();
             new LogInFuncionario();
+        }
+        if (e.getSource()==adicionarProdutosServicosButton){
+
+        }
+        if (e.getSource()==listarConsultasButton){
+
         }
         if (e.getSource()==confirmarAnularConsultaButton){
 

@@ -19,6 +19,7 @@ public class PesquisarEmpresa extends JFrame implements ActionListener {
     private JLabel labellocal;
     private JLabel labeltel;
     private JLabel labelestado;
+    private JLabel labeldono;
     private JFrame frame;
 
     public PesquisarEmpresa(){
@@ -53,6 +54,7 @@ public class PesquisarEmpresa extends JFrame implements ActionListener {
                     labeltel.setText("Número de Telemóvel: " + empresa.getnTelefone());
                     labellocal.setText("Localidade: " + empresa.getLocalidade());
                     labellocal.setText("Tipo de Empresa: " + empresa.getTipo());
+                    labeldono.setText("NIF Dono: " + empresa.getDono());
                 }
             }
         }

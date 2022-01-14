@@ -5,6 +5,7 @@ import GUI.PaginaInicial;
 
 public class Main {
     public static void main(String[] args) {
+
         new PaginaInicial();
 
         Repositorio repo = Repositorio.getRepositorio();

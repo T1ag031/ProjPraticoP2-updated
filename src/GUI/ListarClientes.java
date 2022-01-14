@@ -21,14 +21,17 @@ public class ListarClientes extends JFrame implements ActionListener {
         frame1=new JFrame("LISTAR CLIENTES");
         frame1.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame1.setResizable(true);
-        frame1.setPreferredSize(new Dimension(500, 500));
+        frame1.setPreferredSize(new Dimension(900, 900));
         frame1.add(panel1);
         frame1.pack();
         frame1.setLocationRelativeTo(null);
         frame1.setVisible(true);
         voltarButton1.addActionListener(this);
         listarButton.addActionListener(this);
+
+
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==voltarButton1){
@@ -36,43 +39,18 @@ public class ListarClientes extends JFrame implements ActionListener {
             new MenuAdmin();
         }
         if (e.getSource()==listarButton){
-            Collection<Utilizadores> listaCli = UserBLL.getAllUsers();
+            DefaultTableModel tableModel = (DefaultTableModel)this.table1.getModel();
 
-            DefaultTableModel model = (DefaultTableModel)this.table1.getModel();
+            tableModel.addColumn("Nome Cliente");
+            tableModel.addColumn("NIF");
+            tableModel.addColumn("Morada");
+            tableModel.addColumn("Número Telemóvel");
+            tableModel.addColumn("Username");
+            tableModel.addColumn("ID");
 
-            model.addColumn("Nome Cliente");
-            model.addColumn("NIF");
-            model.addColumn("Morada");
-            model.addColumn("Número Telemóvel");
-
-            //\model.addRow();
-
-
-            /*String nif11= textField1.getText();
-            Collection<Utilizadores> users = UserBLL.getAllUsers();
-            for (Utilizadores cli : users){
-                if (cli.getNIF().equals(nif11)){
-                    label.setText("Nome: " + cli.getNome());
-                    labelnif.setText("NIF: " + cli.getNIF());
-                    labeltel.setText("Número de Telemóvel: " + cli.getnTelefone());
-                    labelmor.setText("Morada: " + cli.getMorada());
-                }else {
-                    label.setText("CLIENTE NÃO ENCONTRADO");
-                }
-            }*/
-
-            /*String nif11= textField1.getText();
-            Collection<DonoEmpresa> dono = DonoBLL.getAllDonos();
-            for (DonoEmpresa donoEmpresa : dono){
-                if (donoEmpresa.getNIFDono().equals(nif11)){
-                    label.setText("Nome: " + donoEmpresa.getNomeDono());
-                    labelnif.setText("NIF: " + donoEmpresa.getNIFDono());
-                    labeltel.setText("Número de Telemóvel: " + donoEmpresa.getnTelefoneDono());
-                    labelmor.setText("Morada: " + donoEmpresa.getMoradaDono());
-                }else {
-                    label.setText("DONO DE EMPRESA NÃO ENCONTRADO");
-                }
-            }*/
+           for (Utilizadores cli : Repositorio.getRepositorio().getUsers().values()){
+                tableModel.addRow(new Object[]{cli.getNome(), cli.getNIF(), cli.getMorada(), cli.getnTelefone(), cli.getUsername(), cli.getIdUser()});
+           }
         }
     }
 }

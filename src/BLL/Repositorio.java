@@ -13,11 +13,13 @@ public class Repositorio implements Serializable {
     private int nextiDEmpresa=0;
     private int nextiDConsulta=0;
     private int nextIDFuncionario=0;
+    private int nextIDAnimal=0;
     private Map<Integer, Utilizadores> users;
     private Map<Integer, DonoEmpresa> donos;
     private Map<Integer, Empresa> empresa;
     private Map<Integer, Consulta> consultas;
     private Map<Integer, Funcionario> funcionario;
+    private Map<Integer, Animal> animal;
 
     public Repositorio() {
         users = (Map<Integer, Utilizadores>) desserializar("cliente.repo");
@@ -25,6 +27,7 @@ public class Repositorio implements Serializable {
         empresa = (Map<Integer, Empresa>) desserializar("empresa.repo");
         consultas = (Map<Integer, Consulta>) desserializar("consultas.repo");
         funcionario = (Map<Integer, Funcionario>) desserializar("funcionarios.repo");
+        animal = (Map<Integer, Animal>) desserializar("animal.repo");
     }
     public Map<Integer, DonoEmpresa> getDonos() {
         return donos;
@@ -44,6 +47,19 @@ public class Repositorio implements Serializable {
 
     public Map<Integer, Funcionario> getFuncionario() {
         return funcionario;
+    }
+
+    public Map<Integer, Animal> getAnimal() {
+        return animal;
+    }
+
+    public int getNextIDAnimal() {
+        if(_repo.getAnimal().isEmpty())return 0;
+        return (int) _repo.getAnimal().keySet().toArray()[_repo.getAnimal().keySet().size() -1] +1;
+    }
+
+    public void setNextIDAnimal(int nextIDAnimal) {
+        this.nextIDAnimal = nextIDAnimal;
     }
 
     public int getNextIDFuncionario() {

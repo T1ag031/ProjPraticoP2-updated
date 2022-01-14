@@ -10,11 +10,38 @@ public class Consulta implements Serializable {
     private String nomeVet;
     private String animal;
     private int nConsulta;
+    private float totalpreco;
+    private String descricao;
+    private int nifc;
     private Estado estado;
     private TipoConsulta tipoConsulta;
 
     //public Consulta() {}
 
+
+    public int getNifcliente() {
+        return nifc;
+    }
+
+    public void setNifcliente(int nifc) {
+        this.nifc = nifc;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public float getTotalpreco() {
+        return totalpreco;
+    }
+
+    public void setTotalpreco(float totalpreco) {
+        this.totalpreco = totalpreco;
+    }
 
     public TipoConsulta getTipoConsulta() {
         return tipoConsulta;

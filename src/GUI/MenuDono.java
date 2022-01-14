@@ -53,7 +53,7 @@ public class MenuDono extends JFrame implements ActionListener {
         }
         if (e.getSource()==verConsultasMarcadasButton){
             frame2.dispose();
-            new ConsultasMarcadas();
+            new VerConsultasMarcadas();
 
         }
         if (e.getSource()==confirmarAnularConsultaButton){
