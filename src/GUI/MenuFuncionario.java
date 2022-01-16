@@ -35,7 +35,7 @@ public class MenuFuncionario extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==terminarSessaoButton){
             frame2.dispose();
-            new LogInFuncionario();
+            new EscolhaInicial();
         }
         if (e.getSource()==adicionarProdutosServicosButton){
             frame2.dispose();

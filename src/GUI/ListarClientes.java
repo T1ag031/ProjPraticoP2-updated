@@ -12,7 +12,6 @@ import java.util.Collection;
 
 public class ListarClientes extends JFrame implements ActionListener {
     private JPanel panel1;
-    private JButton listarButton;
     private JButton voltarButton1;
     private JTable table1;
     private JFrame frame1;
@@ -27,9 +26,19 @@ public class ListarClientes extends JFrame implements ActionListener {
         frame1.setLocationRelativeTo(null);
         frame1.setVisible(true);
         voltarButton1.addActionListener(this);
-        listarButton.addActionListener(this);
 
+        DefaultTableModel tableModel = (DefaultTableModel)this.table1.getModel();
 
+        tableModel.addColumn("Nome Cliente");
+        tableModel.addColumn("NIF");
+        tableModel.addColumn("Morada");
+        tableModel.addColumn("Número Telemóvel");
+        tableModel.addColumn("Username");
+        tableModel.addColumn("ID");
+
+        for (Utilizadores cli : Repositorio.getRepositorio().getUsers().values()){
+            tableModel.addRow(new Object[]{cli.getNome(), cli.getNIF(), cli.getMorada(), cli.getnTelefone(), cli.getUsername(), cli.getIdUser()});
+        }
     }
 
     @Override
@@ -38,19 +47,6 @@ public class ListarClientes extends JFrame implements ActionListener {
             frame1.dispose();
             new MenuAdmin();
         }
-        if (e.getSource()==listarButton){
-            DefaultTableModel tableModel = (DefaultTableModel)this.table1.getModel();
 
-            tableModel.addColumn("Nome Cliente");
-            tableModel.addColumn("NIF");
-            tableModel.addColumn("Morada");
-            tableModel.addColumn("Número Telemóvel");
-            tableModel.addColumn("Username");
-            tableModel.addColumn("ID");
-
-           for (Utilizadores cli : Repositorio.getRepositorio().getUsers().values()){
-                tableModel.addRow(new Object[]{cli.getNome(), cli.getNIF(), cli.getMorada(), cli.getnTelefone(), cli.getUsername(), cli.getIdUser()});
-           }
-        }
     }
 }

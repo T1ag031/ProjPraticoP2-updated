@@ -10,7 +10,6 @@ public class MenuAdmin extends JFrame implements ActionListener {
     private JButton eliminarEmpresaButton;
     private JButton listarConsultasButton;
     private JButton listarClientesButton;
-    private JButton criarAlterarRemoverEspecialidadesButton;
     private JButton voltarButton;
     private JButton listarEmpresasButton;
     private JFrame frame;
@@ -27,7 +26,6 @@ public class MenuAdmin extends JFrame implements ActionListener {
         eliminarEmpresaButton.addActionListener(this);
         listarConsultasButton.addActionListener(this);
         listarClientesButton.addActionListener(this);
-        criarAlterarRemoverEspecialidadesButton.addActionListener(this);
         voltarButton.addActionListener(this);
         listarEmpresasButton.addActionListener(this);
     }

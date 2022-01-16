@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class ListarConsultas extends JFrame implements ActionListener {
     private JPanel panel1;
     private JTable table1;
-    private JButton listarButton;
+
     private JButton voltarButton;
     private JFrame frame1;
 
@@ -25,8 +25,19 @@ public class ListarConsultas extends JFrame implements ActionListener {
         frame1.pack();
         frame1.setLocationRelativeTo(null);
         frame1.setVisible(true);
-        listarButton.addActionListener(this);
         voltarButton.addActionListener(this);
+        DefaultTableModel tableM = (DefaultTableModel)this.table1.getModel();
+
+        tableM.addColumn("Animal");
+        tableM.addColumn("Data");
+        tableM.addColumn("Empresa");
+        tableM.addColumn("Preço");
+        tableM.addColumn("Tipo");
+        tableM.addColumn("Estado");
+
+        for (Consulta consulta : Repositorio.getRepositorio().getConsultas().values()){
+            tableM.addRow(new Object[]{consulta.getAnimal(), consulta.getDataconsulta(), consulta.getNomeVet(), consulta.getPreco(), consulta.getTipoConsulta(), consulta.getEstado()});
+        }
     }
 
     @Override
@@ -35,19 +46,6 @@ public class ListarConsultas extends JFrame implements ActionListener {
             frame1.dispose();
             new MenuAdmin();
         }
-        if (e.getSource()==listarButton){
-            DefaultTableModel tableM = (DefaultTableModel)this.table1.getModel();
 
-            tableM.addColumn("Animal");
-            tableM.addColumn("Data");
-            tableM.addColumn("Empresa");
-            tableM.addColumn("Preço");
-            tableM.addColumn("Tipo");
-            tableM.addColumn("Estado");
-
-            for (Consulta consulta : Repositorio.getRepositorio().getConsultas().values()){
-                tableM.addRow(new Object[]{consulta.getAnimal(), consulta.getDataconsulta(), consulta.getNomeVet(), consulta.getPreco(), consulta.getTipoConsulta(), consulta.getEstado()});
-            }
-        }
     }
 }

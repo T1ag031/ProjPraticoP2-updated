@@ -40,7 +40,7 @@ public class RegistarFuncionario extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==voltarButton){
             frame.dispose();
-            new EscolhaInicial();
+            new MenuDono();
         }
         if (e.getSource()==limparButton){
             textField1.setText("");

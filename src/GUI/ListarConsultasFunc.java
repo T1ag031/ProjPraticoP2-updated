@@ -19,7 +19,7 @@ public class ListarConsultasFunc extends JFrame implements ActionListener {
     private JFrame frame1;
 
     public ListarConsultasFunc(){
-        frame1=new JFrame("LISTAR EMPRESAS");
+        frame1=new JFrame("LISTAR CONSULTAS");
         frame1.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame1.setResizable(true);
         frame1.setPreferredSize(new Dimension(900, 900));
