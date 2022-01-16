@@ -19,6 +19,7 @@ public class LogIn extends JFrame implements ActionListener {
     private JLabel passlabel;
     private JButton limparButton;
     private JButton voltarButton;
+    private JLabel label;
     private JFrame frame;
 
 
@@ -47,15 +48,19 @@ public class LogIn extends JFrame implements ActionListener {
             String pass = String.valueOf(passwordField1.getPassword());
 
             for (Utilizadores cli : Repositorio.getRepositorio().getUsers().values()){
-                if (cli.getUsername().equals(textField1.getText())){
-                    if (cli.getPassword().equals(pass)){
-                        new MenuCliente();
-                    }
+                if (cli.getUsername().equals(textField1.getText()) && cli.getPassword().equals(pass)){
+                    new MenuCliente();
+                }else {
+                    label.setText("USERNAME OU PASSWORD ERRADOS! TENTE NOVAMENTE");
                 }
             }
             if (textField1.getText().equals("admin") && passwordField1.getText().equals("admin")){
                 frame.dispose();
                 new MenuAdmin();
+            }else {
+                label.setText("USERNAME OU PASSWORD ERRADOS! TENTE NOVAMENTE");
+                textField1.setText("");
+                passwordField1.setText("");
             }
         }
         if (e.getSource()==voltarButton){

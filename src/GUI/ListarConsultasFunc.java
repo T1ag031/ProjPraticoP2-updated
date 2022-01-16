@@ -10,16 +10,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VerConsultasMarcadas extends JFrame implements ActionListener {
-    private JButton listarButton;
-    private JButton voltarButton;
-    private JFrame frame1;
+public class ListarConsultasFunc extends JFrame implements ActionListener {
     private JPanel panel1;
     private JTable table1;
+    private JButton listarButton;
+    private JButton voltarButton;
     private JTextField textField1;
+    private JFrame frame1;
 
-    public VerConsultasMarcadas(){
-        frame1=new JFrame("LISTAR CONSULTAS MARCADAS");
+    public ListarConsultasFunc(){
+        frame1=new JFrame("LISTAR EMPRESAS");
         frame1.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame1.setResizable(true);
         frame1.setPreferredSize(new Dimension(900, 900));
@@ -27,28 +27,29 @@ public class VerConsultasMarcadas extends JFrame implements ActionListener {
         frame1.pack();
         frame1.setLocationRelativeTo(null);
         frame1.setVisible(true);
-        listarButton.addActionListener(this);
         voltarButton.addActionListener(this);
+        listarButton.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==voltarButton){
             frame1.dispose();
-            new MenuDono();
+            new MenuFuncionario();
         }
         if (e.getSource()==listarButton){
+
             DefaultTableModel tableM = (DefaultTableModel)this.table1.getModel();
-                tableM.addColumn("Nome Animal");
-                tableM.addColumn("Data");
-                tableM.addColumn("Empresa");
-                tableM.addColumn("Preco");
-                tableM.addColumn("Tipo");
-                tableM.addColumn("Estado");
+            tableM.addColumn("Animal");
+            tableM.addColumn("Data");
+            tableM.addColumn("Empresa");
+            tableM.addColumn("Preço");
+            tableM.addColumn("Tipo");
+            tableM.addColumn("Estado");
 
             for (Consulta consulta : Repositorio.getRepositorio().getConsultas().values()){
                 if (consulta.getNomeVet()==(Integer.parseInt(textField1.getText()))){
-                        tableM.addRow(new Object[]{consulta.getAnimal(), consulta.getDataconsulta(), consulta.getNomeVet(), consulta.getPreco(), consulta.getTipoConsulta(), consulta.getEstado()});
+                    tableM.addRow(new Object[]{consulta.getAnimal(), consulta.getDataconsulta(), consulta.getNomeVet(), consulta.getPreco(), consulta.getTipoConsulta(), consulta.getEstado()});
                 }
             }
         }

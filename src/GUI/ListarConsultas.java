@@ -40,7 +40,7 @@ public class ListarConsultas extends JFrame implements ActionListener {
 
             tableM.addColumn("Animal");
             tableM.addColumn("Data");
-            tableM.addColumn("Funcionário");
+            tableM.addColumn("Empresa");
             tableM.addColumn("Preço");
             tableM.addColumn("Tipo");
             tableM.addColumn("Estado");

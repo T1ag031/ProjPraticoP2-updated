@@ -15,6 +15,7 @@ public class LogInFuncionario extends JFrame implements ActionListener {
     private JButton logInButton;
     private JButton voltarButton;
     private JButton limparButton;
+    private JLabel label;
     private JFrame frame;
 
     public LogInFuncionario(){
@@ -30,25 +31,31 @@ public class LogInFuncionario extends JFrame implements ActionListener {
         limparButton.addActionListener(this);
         voltarButton.addActionListener(this);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==voltarButton){
+        if(e.getSource()==voltarButton){
             frame.dispose();
             new EscolhaInicial();
         }
-        if (e.getSource()==limparButton){
+        if(e.getSource()==limparButton){
             textField1.setText("");
             passwordField1.setText("");
         }
-        if (e.getSource()==logInButton){
+
+        if(e.getSource()==logInButton){
             String pass = String.valueOf(passwordField1.getPassword());
             for (Funcionario funcionario: Repositorio.getRepositorio().getFuncionario().values()){
-                if (funcionario.getUsernameFun().equals(textField1.getText())){
-                    if (funcionario.getPasswordFun().equals(pass)){
-                        new MenuFuncionario();
-                    }
+                if(funcionario.getUsernameFun().equals(textField1.getText()) && funcionario.getPasswordFun().equals(pass)){
+                    frame.dispose();
+                    new MenuFuncionario();
+                }else {
+                    label.setText("USERNAME OU PASSWORD ERRADOS! TENTE NOVAMENTE");
+                    textField1.setText("");
+                    passwordField1.setText("");
                 }
             }
         }
+
     }
 }

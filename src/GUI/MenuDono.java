@@ -13,6 +13,7 @@ public class MenuDono extends JFrame implements ActionListener {
     private JButton confirmarAnularConsultaButton;
     private JButton voltarButton;
     private JButton alterarInformaçãoEmpresaButton;
+    private JButton listarEmpresasButton;
     private JFrame frame2;
 
     public MenuDono(){
@@ -31,6 +32,7 @@ public class MenuDono extends JFrame implements ActionListener {
         confirmarAnularConsultaButton.addActionListener(this);
         voltarButton.addActionListener(this);
         alterarInformaçãoEmpresaButton.addActionListener(this);
+        listarEmpresasButton.addActionListener(this);
     }
 
     @Override
@@ -63,6 +65,10 @@ public class MenuDono extends JFrame implements ActionListener {
         if (e.getSource()==alterarInformaçãoEmpresaButton){
             frame2.dispose();
             new AlterarInfoEmpresa();
+        }
+        if (e.getSource()==listarEmpresasButton){
+            frame2.dispose();
+            new ListarEmpresasDono();
         }
     }
 }

@@ -2,6 +2,7 @@ package GUI;
 
 import BLL.Empresa;
 import BLL.EmpresaBLL;
+import BLL.EstadoEmpresa;
 import BLL.Repositorio;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class RemoverEmpresa extends JFrame implements ActionListener {
     private JLabel labelnif;
     private JLabel labelloc;
     private JLabel labeltel;
+    private JLabel lab;
     private JFrame frame;
 
     public RemoverEmpresa() {
@@ -64,24 +66,31 @@ public class RemoverEmpresa extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == mostrarDadosEmpresaButton) {
-            String nif = textField1.getText();
+
             for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()) {
-                if (empresa.getNif().equals(nif)) {
+                if (empresa.getIdEmpresa() == (Integer.parseInt(textField1.getText()))) {
                     labelnome.setText("Nome: " + empresa.getNome());
                     labelnif.setText("NIF: " + empresa.getNif());
                     labeltel.setText("Número de Telemóvel: " + empresa.getnTelefone());
-                    labelloc.setText("Localidade: " + empresa.getLocalidade());
-                } else {
-                    labelnif.setText("EMPRESA NÃO ENCONTRADA!");
+                    labelloc.setText("Dono: " + empresa.getDono());
                 }
             }
         }
 
         if (e.getSource() == removerButton) {
-            String nif = textField1.getText();
+            Repositorio repo = Repositorio.getRepositorio();
             for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()) {
-                if (empresa.getNif().equals(nif)) {
-
+                if (empresa.getIdEmpresa() == (Integer.parseInt(textField1.getText()))) {
+                    empresa.setEstado(EstadoEmpresa.DESATIVA);
+                    repo.serializar("empresa.repo", Repositorio.getRepositorio().getEmpresa());
+                    lab.setText("EMPRESA DESATIVADA COM SUCESSO!");
+                }else {
+                    lab.setText("EMPRESA NÃO ENCONTRADA!");
+                    textField1.setText("");
+                    labeltel.setText("");
+                    labelnif.setText("");
+                    labelloc.setText("");
+                    labelnome.setText("");
                 }
             }
         }

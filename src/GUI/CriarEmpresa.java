@@ -1,9 +1,6 @@
 package GUI;
 
-import BLL.Empresa;
-import BLL.EmpresaBLL;
-import BLL.EstadoEmpresa;
-import BLL.TipoEmpresa;
+import BLL.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,37 +39,57 @@ public class CriarEmpresa extends JFrame implements ActionListener  {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==limparButton){
+        if (e.getSource() == limparButton) {
             textField1.setText("");
             textField2.setText("");
             textField4.setText("");
             textField3.setText("");
             textField5.setText("");
+            label.setText("");
         }
-        if (e.getSource()==voltarButton){
+        if (e.getSource() == voltarButton) {
             frame.dispose();
             new MenuDono();
         }
-        if (e.getSource()==registarButton){
-            Empresa empresa = new Empresa();
-
-            empresa.setNome(textField1.getText());
-            empresa.setNif(textField2.getText());
-            empresa.setLocalidade(textField3.getText());
-            empresa.setnTelefone(textField4.getText());
-            empresa.setDono(Integer.parseInt(textField5.getText()));
-            empresa.setEstado(EstadoEmpresa.ATIVA);
-            if (belezaCheckBox.isSelected()){
-                empresa.setTipo(TipoEmpresa.BELEZA);
+        if (e.getSource() == registarButton) {
+            for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()){
+                if (!(textField1.getText().equals(""))) {
+                    if (!(textField2.getText().equals(""))) {
+                        if (!(textField3.getText().equals(""))) {
+                            if (!(textField4.getText().equals(""))) {
+                                if (!(textField5.getText().equals(""))) {
+                                    Empresa empresa1 = new Empresa();
+                                    empresa1.setNome(textField1.getText());
+                                    empresa1.setNif(textField2.getText());
+                                    empresa1.setLocalidade(textField3.getText());
+                                    empresa1.setnTelefone(textField4.getText());
+                                    empresa1.setDono(Integer.parseInt(textField5.getText()));
+                                    empresa1.setEstado(EstadoEmpresa.ATIVA);
+                                    if (belezaCheckBox.isSelected()){
+                                        empresa1.setTipo(TipoEmpresa.BELEZA);
+                                    }
+                                    if (saúdeCheckBox.isSelected()){
+                                        empresa1.setTipo(TipoEmpresa.SAUDE);
+                                    }
+                                    EmpresaBLL.criarEmpresa(empresa1);
+                                    label.setText("EMPRESA CRIADA COM SUCESSO");
+                                } else {
+                                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                                }
+                            } else {
+                                label.setText("HÁ ESPAÇOS EM BRANCO!");
+                            }
+                        } else {
+                            label.setText("HÁ ESPAÇOS EM BRANCO!");
+                        }
+                    } else {
+                        label.setText("HÁ ESPAÇOS EM BRANCO!");
+                    }
+                } else {
+                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                }
             }
-            if (saúdeCheckBox.isSelected()){
-                empresa.setTipo(TipoEmpresa.SAUDE);
-            }
-
-            EmpresaBLL.criarEmpresa(empresa);
-
-            label.setText("EMPRESA CRIADA COM SUCESSO");
         }
-
     }
 }
+

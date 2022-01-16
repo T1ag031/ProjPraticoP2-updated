@@ -22,8 +22,6 @@ public class MarcarConsulta extends JFrame implements ActionListener {
     private JCheckBox belezaCheckBox;
     private JCheckBox saudeCheckBox;
     private JTable table1;
-    private JButton mostrarFuncionáriosButton;
-    private JButton mostrarAnimaisButton;
     private JTable table;
     private JTextField textField3;
     private JFrame frame;
@@ -41,8 +39,23 @@ public class MarcarConsulta extends JFrame implements ActionListener {
         marcarButton.addActionListener(this);
         limparButton.addActionListener(this);
         voltarButton.addActionListener(this);
-        mostrarAnimaisButton.addActionListener(this);
-        mostrarFuncionáriosButton.addActionListener(this);
+
+        DefaultTableModel model = (DefaultTableModel) this.table1.getModel();
+        model.addColumn("Nome");
+        model.addColumn("Tipo de Animal");
+        for (Animal animal : Repositorio.getRepositorio().getAnimal().values()){
+            model.addRow(new Object[]{animal.getNome(), animal.getTipoAnimal()});
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) this.table.getModel();
+        tableModel.addColumn("Empresa");
+        tableModel.addColumn("Tipo de Serviço");
+        tableModel.addColumn("Estado");
+        tableModel.addColumn("Número");
+
+        for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()){
+            tableModel.addRow(new Object[]{empresa.getNome(), empresa.getTipo(), empresa.getEstado(), empresa.getIdEmpresa()});
+        }
     }
 
     @Override
@@ -51,33 +64,15 @@ public class MarcarConsulta extends JFrame implements ActionListener {
             textField1.setText("");
             textField2.setText("");
             textField5.setText("");
+            label.setText("");
         }
         if (e.getSource()==voltarButton){
             frame.dispose();
             new MenuCliente();
         }
-        if (e.getSource()==mostrarAnimaisButton){
-            DefaultTableModel model = (DefaultTableModel) this.table1.getModel();
-            model.addColumn("Nome");
-            model.addColumn("Tipo de Animal");
-            for (Animal animal : Repositorio.getRepositorio().getAnimal().values()){
-                    model.addRow(new Object[]{animal.getNome(), animal.getTipoAnimal()});
-            }
-        }
-
-        if (e.getSource()==mostrarFuncionáriosButton){
-            DefaultTableModel model = (DefaultTableModel) this.table.getModel();
-            model.addColumn("Empresa");
-            model.addColumn("Tipo de Serviço");
-            model.addColumn("Estado");
-
-            for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()){
-                    model.addRow(new Object[]{empresa.getNome(), empresa.getTipo(), empresa.getEstado()});
-            }
-        }
 
         if (e.getSource()==marcarButton){
-            Consulta consulta = new Consulta();
+
            if (textField2.getText().equals("")){
                 if (textField5.getText().equals("")){
                     if (textField1.getText().equals("")){
@@ -90,28 +85,35 @@ public class MarcarConsulta extends JFrame implements ActionListener {
                     }
                 }
            }else{
-               consulta.setDataconsulta(textField2.getText());
-               consulta.setNomeVet(textField5.getText());
-               consulta.setAnimal(textField1.getText());
-               consulta.setEstado(Estado.MARCADA);
-               consulta.setNifcliente(Integer.parseInt(textField3.getText()));
                for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()){
-                   if (empresa.getEstado().equals(EstadoEmpresa.DESATIVA)){
-                       label.setText("EMPRESA INDISPONÍVEL! POR FAVOR ESCOLHA OUTRA");
-                       textField3.setText("");
+                    if (empresa.getIdEmpresa()==(Integer.parseInt(textField5.getText()))){
+                        if (empresa.getEstado().equals(EstadoEmpresa.DESATIVA)){
+                            label.setText("EMPRESA INDISPONIVEL!");
+                            textField1.setText("");
+                            textField2.setText("");
+                            textField3.setText("");
+                            textField5.setText("");
+                        }
+                    } else {
+                       Consulta consulta = new Consulta();
+                       consulta.setDataconsulta(textField2.getText());
+                       consulta.setNomeVet(Integer.parseInt(textField5.getText()));
+                       consulta.setAnimal(textField1.getText());
+                       consulta.setEstado(Estado.MARCADA);
+                       consulta.setNifcliente(Integer.parseInt(textField3.getText()));
+                       if (belezaCheckBox.isSelected()){
+                           consulta.setTipoConsulta(TipoConsulta.BELEZA);
+                           consulta.setPreco(30);
+                           ConsultaBLL.marcarConsulta(consulta);
+                           label.setText("CONSULTA MARCADA COM SUCESSO!");
+                       }
+                       if (saudeCheckBox.isSelected()){
+                           consulta.setPreco(50);
+                           consulta.setTipoConsulta(TipoConsulta.SAUDE);
+                           ConsultaBLL.marcarConsulta(consulta);
+                           label.setText("CONSULTA MARCADA COM SUCESSO!");
+                       }
                    }
-               }
-               if (belezaCheckBox.isSelected()){
-                   consulta.setTipoConsulta(TipoConsulta.BELEZA);
-                   consulta.setPreco(30);
-                   ConsultaBLL.marcarConsulta(consulta);
-                   label.setText("CONSULTA MARCADA COM SUCESSO!");
-               }
-               if (saudeCheckBox.isSelected()){
-                   consulta.setPreco(50);
-                   consulta.setTipoConsulta(TipoConsulta.SAUDE);
-                   ConsultaBLL.marcarConsulta(consulta);
-                   label.setText("CONSULTA MARCADA COM SUCESSO!");
                }
            }
         }

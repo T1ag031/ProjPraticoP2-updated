@@ -8,11 +8,11 @@ import java.awt.geom.Ellipse2D;
 public class MenuAdmin extends JFrame implements ActionListener {
     private JPanel panel1;
     private JButton eliminarEmpresaButton;
-    private JButton eliminarDonoDeEmpresaButton;
     private JButton listarConsultasButton;
     private JButton listarClientesButton;
     private JButton criarAlterarRemoverEspecialidadesButton;
     private JButton voltarButton;
+    private JButton listarEmpresasButton;
     private JFrame frame;
 
     public MenuAdmin(){
@@ -25,11 +25,11 @@ public class MenuAdmin extends JFrame implements ActionListener {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         eliminarEmpresaButton.addActionListener(this);
-        eliminarDonoDeEmpresaButton.addActionListener(this);
         listarConsultasButton.addActionListener(this);
         listarClientesButton.addActionListener(this);
         criarAlterarRemoverEspecialidadesButton.addActionListener(this);
         voltarButton.addActionListener(this);
+        listarEmpresasButton.addActionListener(this);
     }
 
     @Override
@@ -49,6 +49,10 @@ public class MenuAdmin extends JFrame implements ActionListener {
         if (e.getSource()==listarConsultasButton){
             frame.dispose();
             new ListarConsultas();
+        }
+        if (e.getSource()==listarEmpresasButton){
+            frame.dispose();
+            new ListarEmpresas();
         }
     }
 }

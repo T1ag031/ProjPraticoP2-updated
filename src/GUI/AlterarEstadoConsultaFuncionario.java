@@ -1,7 +1,6 @@
 package GUI;
 
 import BLL.Consulta;
-import BLL.ConsultaBLL;
 import BLL.Estado;
 import BLL.Repositorio;
 
@@ -10,23 +9,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AlterarEstadoConsulta extends JFrame implements ActionListener {
+public class AlterarEstadoConsultaFuncionario extends JFrame implements ActionListener {
     private JPanel panel1;
-    private JTextField textField1;
-    private JTextField textField2;
     private JButton alterarButton;
     private JButton limparButton;
     private JButton voltarButton;
-    private JLabel label;
+    private JButton mostrarButton;
+    private JTextField textField1;
     private JCheckBox confirmarCheckBox;
     private JCheckBox anularCheckBox;
     private JCheckBox concluirCheckBox;
     private JLabel labelestado;
-    private JButton mostrarButton;
     private JLabel labelres;
     private JFrame frame;
 
-    public AlterarEstadoConsulta(){
+    public AlterarEstadoConsultaFuncionario(){
         frame= new JFrame("ALTERAR ESTADO CONSULTA");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(500, 500));
@@ -49,7 +46,7 @@ public class AlterarEstadoConsulta extends JFrame implements ActionListener {
         }
         if (e.getSource()==voltarButton){
             frame.dispose();
-            new MenuDono();
+            new MenuFuncionario();
         }
         if (e.getSource()==mostrarButton){
             int n = Integer.parseInt(textField1.getText());
@@ -76,14 +73,17 @@ public class AlterarEstadoConsulta extends JFrame implements ActionListener {
                     if (anularCheckBox.isSelected()){
                         consulta.setEstado(Estado.ANULADA);
                         repo.serializar("consultas.repo", Repositorio.getRepositorio().getConsultas());
+                        labelres.setText("ALTERAÇÃO EFETUADA COM SUCESSO!");
                     }else {
                         labelres.setText("OCORREU UM ERRO!");
                         textField1.setText("");
                         labelestado.setText("");
                     }
+
                     if (concluirCheckBox.isSelected()){
                         consulta.setEstado(Estado.CONCLUIDA);
                         repo.serializar("consultas.repo", Repositorio.getRepositorio().getConsultas());
+                        labelres.setText("ALTERAÇÃO EFETUADA COM SUCESSO!");
                     }else {
                         labelres.setText("OCORREU UM ERRO!");
                         textField1.setText("");

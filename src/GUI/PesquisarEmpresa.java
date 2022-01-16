@@ -40,6 +40,12 @@ public class PesquisarEmpresa extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==limparButton){
             textField1.setText("");
+            labeldono.setText("");
+            labellocal.setText("");
+            labelnome.setText("");
+            labelnif.setText("");
+            labeltel.setText("");
+            labelestado.setText("");
         }
         if (e.getSource()==voltarButton){
             frame.dispose();

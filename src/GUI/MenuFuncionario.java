@@ -17,7 +17,7 @@ public class MenuFuncionario extends JFrame implements ActionListener {
     private JFrame frame2;
 
     public MenuFuncionario(){
-        frame2=new JFrame("CLIENTE");
+        frame2=new JFrame("FUNCIONÁRIO");
         frame2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame2.setPreferredSize(new Dimension(500, 500));
         frame2.setResizable(true);
@@ -38,13 +38,16 @@ public class MenuFuncionario extends JFrame implements ActionListener {
             new LogInFuncionario();
         }
         if (e.getSource()==adicionarProdutosServicosButton){
-
+            frame2.dispose();
+            new AdicionarProdutosConsulta();
         }
         if (e.getSource()==listarConsultasButton){
-
+            frame2.dispose();
+            new ListarConsultasFunc();
         }
         if (e.getSource()==confirmarAnularConsultaButton){
-
+            frame2.dispose();
+            new AlterarEstadoConsultaFuncionario();
         }
     }
 }

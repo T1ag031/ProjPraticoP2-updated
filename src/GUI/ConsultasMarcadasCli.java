@@ -42,14 +42,16 @@ public class ConsultasMarcadasCli extends JFrame implements ActionListener {
 
             tableM.addColumn("Animal");
             tableM.addColumn("Data");
-            tableM.addColumn("Funcionário");
+            tableM.addColumn("Empresa");
             tableM.addColumn("Preço");
             tableM.addColumn("Tipo");
             tableM.addColumn("Estado");
+            tableM.addColumn("NºConsulta");
+            tableM.addColumn("Preço Total");
             for (Consulta consulta1: Repositorio.getRepositorio().getConsultas().values()){
                 if (consulta1.getEstado().equals(Estado.MARCADA)){
                     if (consulta1.getNifcliente()==(Integer.parseInt(textField1.getText()))){
-                        tableM.addRow(new Object[]{consulta1.getAnimal(), consulta1.getDataconsulta(), consulta1.getNomeVet(), consulta1.getPreco(), consulta1.getTipoConsulta(), consulta1.getEstado()});
+                        tableM.addRow(new Object[]{consulta1.getAnimal(), consulta1.getDataconsulta(), consulta1.getNomeVet(), consulta1.getPreco(), consulta1.getTipoConsulta(), consulta1.getEstado(), consulta1.getnConsulta(), consulta1.getTotalpreco()});
                     }
                 }
             }

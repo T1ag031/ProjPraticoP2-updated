@@ -2,6 +2,8 @@ package GUI;
 
 import BLL.DonoBLL;
 import BLL.DonoEmpresa;
+import BLL.UserBLL;
+import BLL.Utilizadores;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,27 +41,41 @@ public class RegistarDono extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==registarButton){
-            String nome1 = textField1.getText();
-            String nif1 = textField2.getText();
-            String ntel1 = textField3.getText();
-            String morada1= textField4.getText();
-            String usern1 = textField5.getText();
-            String pass1 = String.valueOf(passwordField1.getPassword());
 
-            DonoEmpresa dono = new DonoEmpresa();
-
-            dono.setNomeDono(nome1);
-            dono.setNIFDono(nif1);
-            dono.setnTelefoneDono(ntel1);
-            dono.setMoradaDono(morada1);
-            dono.setUsernameDono(usern1);
-            dono.setPasswordDono(pass1);
-
-            DonoBLL.criarDonoEmpresa(dono);
-
-            label.setText("DONO DE EMPRESA CRIADO COM SUCESSO!");
-
-    }
+            if (!(textField1.getText().equals(""))){
+                if (!(textField2.getText().equals(""))) {
+                    if (!(textField3.getText().equals(""))){
+                        if (!(textField4.getText().equals(""))) {
+                            if (!(textField5.getText().equals(""))) {
+                                if (!(String.valueOf(passwordField1.getText()).equals(""))) {
+                                    DonoEmpresa dono = new DonoEmpresa();
+                                    dono.setNomeDono(textField1.getText());
+                                    dono.setNIFDono(textField2.getText());
+                                    dono.setnTelefoneDono(textField3.getText());
+                                    dono.setMoradaDono(textField4.getText());
+                                    dono.setUsernameDono(textField5.getText());
+                                    dono.setPasswordDono(String.valueOf(passwordField1.getPassword()));
+                                    DonoBLL.criarDonoEmpresa(dono);
+                                    label.setText("DONO DE EMPRESA CRIADO COM SUCESSO!");
+                                } else {
+                                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                                }
+                            } else {
+                                label.setText("HÁ ESPAÇOS EM BRANCO!");
+                            }
+                        }else{
+                            label.setText("HÁ ESPAÇOS EM BRANCO!");
+                        }
+                    }else{
+                        label.setText("HÁ ESPAÇOS EM BRANCO!");
+                    }
+                }else{
+                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                }
+            }else{
+                label.setText("HÁ ESPAÇOS EM BRANCO!");
+            }
+        }
         if (e.getSource()==voltarButton){
             frame1.dispose();
             new EscolhaInicial();

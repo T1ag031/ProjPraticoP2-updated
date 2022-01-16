@@ -7,7 +7,7 @@ public class Consulta implements Serializable {
     private String dataconsulta;
     private float preco;
     private Date dataPagamento;
-    private String nomeVet;
+    private int nomeVet;
     private String animal;
     private int nConsulta;
     private float totalpreco;
@@ -91,11 +91,11 @@ public class Consulta implements Serializable {
         this.dataPagamento = dataPagamento;
     }
 
-    public String getNomeVet() {
+    public int getNomeVet() {
         return nomeVet;
     }
 
-    public void setNomeVet(String nomeVet) {
+    public void setNomeVet(int nomeVet) {
         this.nomeVet = nomeVet;
     }
 

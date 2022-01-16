@@ -23,7 +23,7 @@ public class RegistarFuncionario extends JFrame implements ActionListener {
     private JFrame frame;
 
     public RegistarFuncionario(){
-        frame=new JFrame("REGISTAR FUNCIONÁRIO");
+        frame=new JFrame("REGISTAR");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setResizable(true);
         frame.setPreferredSize(new Dimension(500, 500));
@@ -52,18 +52,40 @@ public class RegistarFuncionario extends JFrame implements ActionListener {
         }
         if (e.getSource()==registarButton){
 
-            Funcionario funcionario = new Funcionario();
 
-            funcionario.setNomeFun(textField1.getText());
-            funcionario.setnTelefoneFun(textField3.getText());
-            funcionario.setNIFFun(textField2.getText());
-            funcionario.setMoradaFun(textField4.getText());
-            funcionario.setUsernameFun(textField5.getText());
-            funcionario.setPasswordFun(passwordField1.getText());
-
-            FuncionarioBLL.criarFuncionario(funcionario);
-
-            label.setText("FUNCIONÁRIO CRIADO COM SUCESSO!");
+            if (!(textField1.getText().equals(""))){
+                if (!(textField2.getText().equals(""))) {
+                    if (!(textField3.getText().equals(""))){
+                        if (!(textField4.getText().equals(""))) {
+                            if (!(textField5.getText().equals(""))) {
+                                if (!(String.valueOf(passwordField1.getText()).equals(""))) {
+                                    Funcionario funcionario = new Funcionario();
+                                    funcionario.setnTelefoneFun(textField3.getText());
+                                    funcionario.setNomeFun(textField1.getText());
+                                    funcionario.setNIFFun(textField2.getText());
+                                    funcionario.setMoradaFun(textField4.getText());
+                                    funcionario.setUsernameFun(textField5.getText());
+                                    funcionario.setPasswordFun(passwordField1.getText());
+                                    FuncionarioBLL.criarFuncionario(funcionario);
+                                    label.setText("FUNCIONÁRIO CRIADO COM SUCESSO!");
+                                } else {
+                                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                                }
+                            } else {
+                                label.setText("HÁ ESPAÇOS EM BRANCO!");
+                            }
+                        }else{
+                            label.setText("HÁ ESPAÇOS EM BRANCO!");
+                        }
+                    }else{
+                        label.setText("HÁ ESPAÇOS EM BRANCO!");
+                    }
+                }else{
+                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                }
+            }else{
+                label.setText("HÁ ESPAÇOS EM BRANCO!");
+            }
         }
     }
 }

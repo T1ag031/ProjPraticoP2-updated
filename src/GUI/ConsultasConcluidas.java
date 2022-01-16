@@ -16,7 +16,6 @@ public class ConsultasConcluidas extends JFrame implements ActionListener {
     private JButton listarButton;
     private JButton voltarButton;
     private JTextField textField1;
-    private JLabel label;
     private JFrame frame;
 
     public ConsultasConcluidas(){
@@ -48,7 +47,7 @@ public class ConsultasConcluidas extends JFrame implements ActionListener {
            tableM.addColumn("Estado");
             for (Consulta consulta: Repositorio.getRepositorio().getConsultas().values()){
                 if (textField1.getText().equals(textField1.getText())){
-                    if (consulta.getEstado().equals(Estado.CONCLUIDA)){
+                    if (consulta.getEstado().equals(Estado.CONCLUIDA) || consulta.getEstado().equals(Estado.PAGA)){
                         tableM.addRow(new Object[]{consulta.getAnimal(), consulta.getDataconsulta(), consulta.getNomeVet(), consulta.getPreco(), consulta.getTipoConsulta(), consulta.getEstado()});
                     }
                 }

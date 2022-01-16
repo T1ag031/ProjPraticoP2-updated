@@ -54,9 +54,9 @@ public class MenuCliente extends JFrame implements ActionListener {
             frame2.dispose();
             new ConsultasConcluidas();
         }
-        if(e.getSource()==fazerPagamentoButton){
+        if (e.getSource()==fazerPagamentoButton){
             frame2.dispose();
-            new FazerPagamento();
+            new PagarConsultas();
         }
     }
 }

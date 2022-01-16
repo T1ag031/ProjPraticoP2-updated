@@ -16,6 +16,7 @@ public class LogInDono extends JFrame implements ActionListener {
     private JButton logInButton;
     private JButton limparButton;
     private JButton voltarButton;
+    private JLabel label;
     private JFrame frame;
 
     public LogInDono(){
@@ -38,17 +39,21 @@ public class LogInDono extends JFrame implements ActionListener {
             textField1.setText("");
             passwordField1.setText("");
         }
+
         if (e.getSource()==logInButton){
             String pass = String.valueOf(passwordField1.getPassword());
             for (DonoEmpresa donoEmpresa : Repositorio.getRepositorio().getDonos().values()){
-                if (donoEmpresa.getUsernameDono().equals(textField1.getText())){
-                    if (donoEmpresa.getPasswordDono().equals(pass)){
+                if (donoEmpresa.getUsernameDono().equals(textField1.getText()) && donoEmpresa.getPasswordDono().equals(pass)){
                         frame.dispose();
                         new MenuDono();
-                    }
+                }else {
+                    label.setText("\"USERNAME OU PASSWORD ERRADOS! TENTE NOVAMENTE\"");
+                    textField1.setText("");
+                    passwordField1.setText("");
                 }
             }
         }
+
         if (e.getSource()==voltarButton){
             frame.dispose();
             new EscolhaInicial();

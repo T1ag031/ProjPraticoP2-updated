@@ -21,6 +21,7 @@ public class AlterarInfoEmpresa extends JFrame implements ActionListener {
     private JLabel labelnome;
     private JLabel labeltel;
     private JLabel labellocal;
+    private JLabel labelres;
     private JFrame frame;
 
     public AlterarInfoEmpresa() {
@@ -65,26 +66,32 @@ public class AlterarInfoEmpresa extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == alterarButton) {
+            Repositorio repo = Repositorio.getRepositorio();
             String nif = textField1.getText();
             for (Empresa empresa : Repositorio.getRepositorio().getEmpresa().values()) {
                 if(empresa.getNif().equals(nif)) {
                     if (!textField2.getText().equals("")) {
                         empresa.setNome(textField2.getText());
+                        repo.serializar("empresa.repo", Repositorio.getRepositorio().getEmpresa());
+                        labelres.setText("ALTERAÇÃO EFETUADA COM SUCESSO!");
                     }else {
                         empresa.setNome(empresa.getNome());
                     }
                     if (!textField3.getText().equals("")) {
                         empresa.setnTelefone(textField3.getText());
+                        repo.serializar("empresa.repo", Repositorio.getRepositorio().getEmpresa());
+                        labelres.setText("ALTERAÇÃO EFETUADA COM SUCESSO!");
                     }else {
                         empresa.setnTelefone(empresa.getnTelefone());
                     }
                     if (!textField4.getText().equals("")) {
                         empresa.setLocalidade(textField4.getText());
+                        repo.serializar("empresa.repo", Repositorio.getRepositorio().getEmpresa());
+                        labelres.setText("ALTERAÇÃO EFETUADA COM SUCESSO!");
                     }else {
                         empresa.setLocalidade(empresa.getLocalidade());
                     }
                 }
-
             }
         }
     }

@@ -1,5 +1,7 @@
 package GUI;
 
+import BLL.Funcionario;
+import BLL.FuncionarioBLL;
 import BLL.UserBLL;
 import BLL.Utilizadores;
 
@@ -40,25 +42,41 @@ public class Registar extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==registarButton){
 
-            String nome = textField1.getText();
-            String nif = textField2.getText();
-            String ntel = textField4.getText();
-            String morada = textField5.getText();
-            String usern = textField6.getText();
-            String pass = passwordField1.getText();
+            if (!(textField1.getText().equals(""))){
+                if (!(textField2.getText().equals(""))) {
+                    if (!(textField6.getText().equals(""))){
+                        if (!(textField4.getText().equals(""))) {
+                            if (!(textField5.getText().equals(""))) {
+                                if (!(String.valueOf(passwordField1.getText()).equals(""))) {
+                                    Utilizadores user = new Utilizadores();
+                                    user.setNome(textField1.getText());
+                                    user.setNIF(textField2.getText());
+                                    user.setnTelefone(textField4.getText());
+                                    user.setMorada(textField5.getText());
+                                    user.setUsername(textField6.getText());
+                                    user.setPassword(String.valueOf(passwordField1.getText()));
+                                    UserBLL.criarCliente(user);
+                                    label.setText("CLIENTE CRIADO COM SUCESSO!");
 
-            Utilizadores user = new Utilizadores();
+                                } else {
+                                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                                }
+                            } else {
+                                label.setText("HÁ ESPAÇOS EM BRANCO!");
+                            }
+                        }else{
+                            label.setText("HÁ ESPAÇOS EM BRANCO!");
+                        }
+                    }else{
+                        label.setText("HÁ ESPAÇOS EM BRANCO!");
+                    }
+                }else{
+                    label.setText("HÁ ESPAÇOS EM BRANCO!");
+                }
+            }else{
+                label.setText("HÁ ESPAÇOS EM BRANCO!");
+            }
 
-            user.setNome(nome);
-            user.setNIF(nif);
-            user.setnTelefone(ntel);
-            user.setMorada(morada);
-            user.setUsername(usern);
-            user.setPassword(pass);
-
-            UserBLL.criarCliente(user);
-
-            label.setText("CLIENTE CRIADO COM SUCESSO!");
         }
 
         if (e.getSource()==voltarButton){
